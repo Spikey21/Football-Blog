@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+
+
+
+{%block title%}
+HOME
+{% endblock title%}
+
+{% block content %}
+
+<h1>Welcome to my blog</h1>
+<h2>I've written {{posts.count}} post{{posts|pluralize}}</h2>
+
+<p>{{posts}}</p>
+
+<ul>
+    {% for post in posts %}
+    <li>{{post}}</li>
+    {% endfor %}
+</ul>
+
+{% for post in posts %}
+
+<a href="{% url 'detail' post.id %}"><h1>{{post.title}}</h1></a>
+<h4>{{post.date|date:"j F Y"}}</h4>
+<p>{{post.text|truncatechars:50}}</p>
+
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+
+{%block title%}
+{{post.title}}
+{% endblock title%}
+
+{% block content %}
+
+
+<h1>{{post.title}}</h1>
+<h4>{{post.date}}</h4>
+{% if post.image %}
+<img src="{{post.image.url}}" alt="Post image" default >
+{% endif %}
+<p>{{post.text}}</p>
+
+{% if recently_read %}
+<h3>Recenlty read</h3>
+{% for id, title in recently_read %}
+<a href="{% url 'detail' id %}">{{title}}</a>
+{%endfor%}
+{% endif %}
+
+{% endblock content %}
